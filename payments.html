@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Payments @ GKroon</title>
+  <link rel="icon" href="ddrlogo.ico" type="icon">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.jpg" alt="GKroon Logo">
+    </div>
+    <button class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="about.html" data-tooltip="Learn about GKroon">About</a></li>
+      <li><a href="index.html" data-tooltip="Our Services To Companies">Company Services</a></li>
+      <li><a href="web-design.html" data-tooltip="Web Design & Development">Web Design & Development</a></li>
+      <li><a href="domains-hosting.html" data-tooltip="Check Out Our Domain & Hosting Packages">Domain & Hosting</a></li>
+      <li><a href="smartphone-repairs.html" data-tooltip="We Offer Smartphone Repair Services">Smartphone Repairs</a></li>
+      <li><a href="blockchain.html" data-tooltip="Blockchain Development">Blockchain Development</a></li>
+    </ul>
+  </nav>
+
+  <div class="releases-container">
+    <h1>Payment Details</h1>
+    
+    <div class="header">
+      <form id="paymentForm" class="payment-form" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service Selected *</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option value="company-registration">Company Registration - R1500</option>
+            <option value="annual-returns">Annual Returns</option>
+            <option value="directors-change">Change Company Directors - R750</option>
+            <option value="address-change">Change Company Address - R550</option>
+            <option value="company-name-change">Change Company Name - R970</option>
+            <option value="company-registration-documents"> Company Registration Documents - R350</option>
+            <option value="beneficial-ownership">Beneficial Owership - R850</option>
+            <option value="register-trademark">trademark Registration - R35000</option>
+            <option value="company-deregistration">Company Deregistration - R1500</option>
+            <option value="tax-clearance">Tax Clearance - R850</option>
+            <option value="import-export-license">Import/Export License - R3500</option>
+            <option value="vat-registration">VAT Registration - R3500</option>
+            <option value="paye-registration">PAYE Registration - R1550</option>
+            <option value="uif-registration">UIF Registration - R3500</option>
+            <option value="company-tax-returns">Company Tax Returns - ???</option>
+            <option value="sars-representative">SARS Registered Representative - R950</option>
+            <option value="coid-registration">COID Registration - R2250</option>
+            <option value="letter of good-standing">Letter Of Goood Standing - R2250</option>
+            <option value="renewl-letter">Renewal Letter Of Good Standing - R1450</option>
+            <option value="cidb-registration">CIDB Registration - R2250</option>
+            <option value="csd-registration">CSD Registration - R1500</option>
+            <option value=b-bb-ee-affidavit>B-BB-EE Affidavit - Free</option>
+            <option value="invoice-template">Invoice Template - Free</option>
+            <option value="company-profile">Company Profile - Free</option>
+            <option value="landing-pages">Landing Pages - R250</option>
+            <option value="basic-website">Basic Website Pckage - R3500</option>
+            <option value="business-website">Business Website Package - R5500</option>
+            <option value="ecommerce-website">Customised E-Commerce Website Package - R7500</option>
+            <option value="customised-website">Customised Website - ???</option>
+            
+            <option value="website-maintenance">Website Maintenance - R500 per month</option>
+            <option value="website-redesign">Website Redesign - R4500</option>
+            <option value="domain-registration">Domain Registration - R250 per year</option>
+            <option value="domain-renewal">Domain Renewal - R150 per year</option>
+            <option value="domain-transfer">Domain Transfer - R500 per year</option>
+            <option value="domain-hosting">Basic Hosting - R350 per month</option>
+            <option value="business-hosting">Business Hosting - R850</option>
+            <option value="premium-hosting">Premium Hosting - R1500</option>
+            
+            
+            
+            
+            
+            
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" name="notes" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="proofOfPayment">Proof of Payment *</label>
+          <input type="file" id="proofOfPayment" name="proofOfPayment" accept=".pdf,.jpg,.jpeg,.png" required>
+          <p class="file-hint">Accepted formats: PDF, JPG, PNG (Max size: 5MB)</p>
+        </div>
+
+        <div class="form-group payment-instructions">
+          <h3>Payment Instructions</h3>
+          <ol>
+            <li>Make payment to the Banking Details Below</li>
+            <li>Use <strong>GKROON</strong> as your payment reference</li>
+            <li>Once we receive payment, we will begin work on your desired product/service</li>
+          </ol>
+
+          <div class="banking-details">
+            <h4>Our Banking Details:</h4>
+            <ul class="bank-info">
+              <li><strong>Bank Name:</strong> STANDARD BANK</li>
+              <li><strong>Account Name:</strong> J.Peters (CEO/Director Of GKroon)</li>
+              <li><strong>Account Number:</strong> 10122598502</li>
+              <li><strong>Account Type:</strong> Cheque/Current</li>
+              <li><strong>Branch Code:</strong> 051001</li>
+              <li><strong>Payment Type:</strong> Immediate Payment</li>
+            </ul>
+          </div>
+        </div>
+
+        <button onclick="redirectToPage('about.html')" class="listen-btn" type="submit" class="cta-button">
+          Submit Details <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <p>Follow us on social media.</p>
+        <div class="social-icons">
+          <a href="#" target="_blank" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" target="_blank" class="social-icon" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" target="_blank" class="social-icon" aria-label="X (Twitter)">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://wa.me/+27661199255" target="_blank" class="social-icon" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://github.com/G-Kroon" target="_blank" class="social-icon" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/company/gkroon" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <div class="legal-links">
+          <a href="#" class="legal-link">Privacy Policy</a>
+          <a href="#" class="legal-link">Terms & Conditions</a>
+          <a href="mailto:info.gkroon@gmail.com" class="legal-link">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; <script>document.write(new Date().getFullYear())</script> GKroon (Pty) Ltd. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

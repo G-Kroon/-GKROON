@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Payment Submissions @ GKroon</title>
+    <link rel="icon" href="ddrlogo.ico" type="icon">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        .submissions-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .submission-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .submission-card p {
+            margin: 5px 0;
+        }
+        .clear-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.jpg" alt="GKroon Logo">
+        </div>
+        <ul class="nav-menu">
+            <li><a href="payments.html">Back to Payments</a></li>
+        </ul>
+    </nav>
+
+    <div class="submissions-container">
+        <h1>Payment Submissions</h1>
+        <button onclick="clearSubmissions()" class="clear-btn">Clear All Submissions</button>
+        <div id="submissions-list"></div>
+    </div>
+
+    <script>
+        function displaySubmissions() {
+            const submissionsList = document.getElementById('submissions-list');
+            const submissions = JSON.parse(localStorage.getItem('paymentSubmissions') || '[]');
+            
+            submissionsList.innerHTML = submissions.length === 0 
+                ? '<p>No submissions yet.</p>'
+                : submissions.reverse().map(sub => `
+                    <div class="submission-card">
+                        <p><strong>Date:</strong> ${sub.timestamp}</p>
+                        <p><strong>Name:</strong> ${sub.fullName}</p>
+                        <p><strong>Email:</strong> ${sub.email}</p>
+                        <p><strong>Phone:</strong> ${sub.phone}</p>
+                        <p><strong>Service:</strong> ${sub.service}</p>
+                        <p><strong>Notes:</strong> ${sub.notes}</p>
+                    </div>
+                `).join('');
+        }
+
+        function clearSubmissions() {
+            if (confirm('Are you sure you want to clear all submissions?')) {
+                localStorage.removeItem('paymentSubmissions');
+                displaySubmissions();
+            }
+        }
+
+        // Display submissions when page loads
+        displaySubmissions();
+    </script>
+</body>
+</html>
