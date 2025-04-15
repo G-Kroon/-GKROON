@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
               (function() {
             // https://dashboard.emailjs.com/admin/account
             emailjs.init({
-              publicKey: "k8FMxcW3OlbaRfu2u",
+              publicKey: "4xBx5qkSFzXI53h-i",
             });
         })();
     </script>
