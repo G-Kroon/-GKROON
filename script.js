@@ -362,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
       // EMAIL JS JAVASCRIPT CODE
+
               (function() {
             // https://dashboard.emailjs.com/admin/account
             emailjs.init({
@@ -382,5 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
             });
         }
-// END OF EMAIL JS JAVASCRIPT CODE
+
+
+      // END OF EMAIL JS JAVASCRIPT CODE
 
