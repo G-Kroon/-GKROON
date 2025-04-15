@@ -361,80 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-//EMAIL JS JAVASCRIPT CODE
-// EmailJS configuration
-(function() {
-  emailjs.init("k8FMxcW3OlbaRfu2u"); // Replace YOUR-PUBLIC-KEY with your actual EmailJS public key
-})();
-
-function submitForm(event) {
-    event.preventDefault();
-
-    const fileInput = document.getElementById('proofOfPayment');
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert('Please upload proof of payment');
-        return;
-    }
-
-    const formData = {
-        id: Date.now(),
-        timestamp: new Date().toLocaleString(),
-        fullName: document.getElementById('fullName').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        service: document.getElementById('service').value,
-        notes: document.getElementById('notes').value,
-        fileName: file.name
-    };
-
-    // Convert file to base64 for email attachment
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function() {
-        const base64File = reader.result.split(',')[1];
-
-    // Send email using EmailJS
-    emailjs.send("service_y8eilob", "template_0fbrelq", {
-        to_email: "info.gkroon@gmail.com",
-        from_name: formData.fullName,
-        from_email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        notes: formData.notes,
-        timestamp: formData.timestamp,
-        attachment: base64File,
-        filename: formData.fileName
-    })
-    .then(function(response) {
-        const notification = document.createElement('div');
-        notification.className = 'success-notification';
-        notification.textContent = 'Form and proof of payment submitted successfully!';
-        document.body.appendChild(notification);
-
-        setTimeout(() => {
-            notification.remove();
-            document.getElementById('paymentForm').reset();
-        }, 3000);
-    })
-    };
-    .catch(function(error) {
-        alert('Error submitting form. Please try again.');
-        console.error('EmailJS error:', error);
-    });
-
-    // Store in localStorage
-    const submissions = JSON.parse(localStorage.getItem('paymentSubmissions') || '[]');
-    submissions.push(formData);
-    localStorage.setItem('paymentSubmissions', JSON.stringify(submissions));
-}
-
       // EMAIL JS JAVASCRIPT CODE
               (function() {
             // https://dashboard.emailjs.com/admin/account
             emailjs.init({
-              publicKey: "YOUR_PUBLIC_KEY",
+              publicKey: "k8FMxcW3OlbaRfu2u",
             });
         })();
     </script>
